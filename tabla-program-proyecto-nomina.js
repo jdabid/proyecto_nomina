@@ -158,7 +158,7 @@ for (let i = 0; i < cantidadDeEmpleados; i++) {
             }
     }
 
-    console.log(`--------------------------------------`);
+    console.log(`-------------------------------------`);
     console.dir(`salario mas primariaX = ${salarioX} `);
     console.dir(`salario mas secundariaZ = ${salarioZ} `);
     console.dir(`salario mas secundariaZ = ${salarioY} `);
