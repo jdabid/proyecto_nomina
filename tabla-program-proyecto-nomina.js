@@ -158,11 +158,31 @@ for (let i = 0; i < cantidadDeEmpleados; i++) {
             }
     }
 
-    console.log(`-------------------------------------`);
-    console.dir(`salario mas primariaX = ${salarioX} `);
-    console.dir(`salario mas secundariaZ = ${salarioZ} `);
-    console.dir(`salario mas secundariaZ = ${salarioY} `);
-    console.log(`--------------------------------------`);
+    //Extranjero
+
+    let SIesextranjero = 0;
+    extranjero = +readlineSync.question(`EL empleado${i+1} es extranjero? *** marque 1(SI) - 2(NO) `);
+    while (extranjero <= 0 || extranjero > 2 || isNaN(extranjero)) {
+        console.error(`Recuerde para indicar si empleado${i+1} es extranjero *** marque 1(SI) - 2(NO) `);
+        extranjero = +readlineSync.question(`EL empleado${i+1} es extranjero? *** marque 1(SI) - 2(NO) `);        
+    }
+        
+    if (extranjero == 2) {
+        console.dir(`empleado${i+1} extranjero NO = ${extranjero}`);
+        }
+        else {
+            SIesextranjero = +readlineSync.question(`Indique el valor del pasaje del empleado${i+1} para viajar al extranjero $`);
+            while (SIesextranjero < 1 || isNaN(SIesextranjero)) {
+                console.error(`Recuerde para indicar el valor del pasaje del empleado${i+1} *** dijite un valor numérico mayor a 0 `);
+                SIesextranjero = +readlineSync.question(`Indique el valor del pasaje del empleado${i+1} para viajar al extranjero $`);        
+            }
+            console.dir(`empleado${i+1} extranjero SI = $${SIesextranjero}`);
+            extranjeroSI = (SIesextranjero*2)+salario;
+            console.dir(`*****extranjeroSI = ${extranjeroSI}******`);            
+            salario = extranjeroSI;
+            console.dir(`salario + SIesextranjero = ${salario}`);
+        }
+
     console.dir(`**** Salario del empleado empleado${i+1} queda en: ${salario}`);
     TotalNominaIncluidoItems = TotalNominaIncluidoItems + salario;
 }

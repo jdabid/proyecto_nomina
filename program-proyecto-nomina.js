@@ -9,6 +9,9 @@ for (let i = 0; i < cantidadDeEmpleados; i++) {
     let cantidadPrimaria = 0;
     let cantidadSecundaria = 0;
     let cantidadUniversidad = 0;
+    let salarioX = 0;
+    let salarioY = 0;
+    let salarioZ = 0;
 
     salario = +readlineSync.question(`Ingrese el salario del empleado${i+1} `);
     while (salario <= 0 || isNaN(salario)) {
@@ -103,55 +106,55 @@ for (let i = 0; i < cantidadDeEmpleados; i++) {
                     console.dir(`cantidadPrimaria typeOF "${typeof(cantidadPrimaria)}"`);
                     salarioX = primariaX * cantidadPrimaria + salario;
                     console.dir(`salario mas primariaX = ${salarioX} `);
+                    salario = salarioX;
+                    console.log(`********* salario = salarioX ${salario} **************`);
                 }
 
                 //SECUNDARIA
-                if ((cantidadEstudian-cantidadPrimaria) > 0) {
+
+                if ((cantidadEstudian-cantidadPrimaria) == 0) {
+                    console.log(`El empleado${i+1} No tiene en SECUNDARIA`);
+                    console.log(`El empleado${i+1} No tiene en UNIVERSIDAD`);                    
+                } else if ((cantidadEstudian-cantidadPrimaria) > 0) {
                     secundaria = +readlineSync.question(`El empleado${i+1} tiene hijos en SECUNDARIA? *** marque 1(SI) - 2(NO) `);
                     while (secundaria <= 0 || secundaria > 2 || isNaN(secundaria)) {
                         console.error(`Recuerde para indicar la cantidad de hijos en SECUNDARIA del empleado${i+1} *** marque 1(SI) - 2(NO) `);
                         secundaria = +readlineSync.question(`El empleado${i+1} tiene hijos en SECUNDARIA? *** marque 1(SI) - 2(NO) `);
                     }
                     if (secundaria == 2) {
-                        console.dir(`El empleado${i+1} No tiene en SECUNDARIA`);
-                    } else {                    
-                        let secundariaZ = 200;
+                        console.dir(`El empleado${i+1} No tiene en SECUNDARIA`);                    
+                } else {
+                    let secundariaZ = 200;
+                    cantidadSecundaria = +readlineSync.question(`Indique la cantidad de hijos en SECUNDARIA del empleado${i+1} `);
+                    while (cantidadSecundaria < 1 || cantidadSecundaria > (cantidadEstudian-cantidadPrimaria) || isNaN(cantidadSecundaria)) {
+                        console.error(`Recuerde para indicar la cantidad de hijos en SECUNDARIA del empleado${i+1} *** marque un número entre 1 y ${(cantidadEstudian-cantidadPrimaria)}`);
                         cantidadSecundaria = +readlineSync.question(`Indique la cantidad de hijos en SECUNDARIA del empleado${i+1} `);
-                        while (cantidadSecundaria < 1 || cantidadSecundaria > (cantidadEstudian-cantidadPrimaria) || isNaN(cantidadSecundaria)) {
-                            console.error(`Recuerde para indicar la cantidad de hijos en SECUNDARIA del empleado${i+1} *** marque un número entre 1 y ${(cantidadEstudian-cantidadPrimaria)}`);
-                            cantidadSecundaria = +readlineSync.question(`Indique la cantidad de hijos en SECUNDARIA del empleado${i+1} `);
-                        }
-                        console.dir(`El empleado${i+1} Si tiene en SECUNDARIA -- cantidadSecundaria "${cantidadSecundaria}"`);
-                        console.dir(`cantidadSecundaria typeOF "${typeof(cantidadSecundaria)}"`);
-                        salarioZ = secundariaZ * cantidadSecundaria + salario;
-                        console.dir(`salario mas secundariaZ = ${salarioZ} `);
                     }
+                    console.dir(`El empleado${i+1} Si tiene en SECUNDARIA -- cantidadSecundaria "${cantidadSecundaria}"`);
+                    console.dir(`cantidadSecundaria typeOF "${typeof(cantidadSecundaria)}"`);
+                    salarioZ = secundariaZ * cantidadSecundaria + salario;
+                    console.dir(`salario mas secundariaZ = ${salarioZ} `);
+                    salario = salarioZ;
+                    console.log(`********* salario = salarioZ ${salario} **************`);
                 }
 
                 //UNIVERSIDAD
-                if ((cantidadEstudian-cantidadPrimaria-cantidadSecundaria) > 0) {
-                    universidad = +readlineSync.question(`El empleado${i+1} tiene hijos en UNIVERSIDAD? *** marque 1(SI) - 2(NO) `);
-                    while (universidad <= 0 || universidad > 2 || isNaN(universidad)) {
-                        console.error(`Recuerde para indicar la cantidad de hijos en UNIVERSIDAD del empleado${i+1} *** marque 1(SI) - 2(NO) `);
-                        universidad = +readlineSync.question(`El empleado${i+1} tiene hijos en UNIVERSIDAD? *** marque 1(SI) - 2(NO) `);
-                    }
-                    if (universidad == 2) {
-                        console.dir(`El empleado${i+1} No tiene en UNIVERSIDAD`);
-                    } else {                    
+                if ((cantidadEstudian-cantidadPrimaria-cantidadSecundaria) == 0) {
+                    console.dir(`El empleado${i+1} No tiene en UNIVERSIDAD`);
+                    } else {
+                        console.log(`**************`);                    
                         let universidadY = 300;
-                        cantidadUniversidad = +readlineSync.question(`Indique la cantidad de hijos en UNIVERSIDAD del empleado${i+1} solo puede digitar el número ${(cantidadEstudian-cantidadPrimaria-cantidadSecundaria)}`);
-                        while (cantidadUniversidad != (cantidadEstudian-cantidadPrimaria-cantidadSecundaria) || isNaN(cantidadUniversidad)) {
-                            console.error(`Recuerde para indicar la cantidad de hijos en UNIVERSIDAD del empleado${i+1} *** marque ${(cantidadEstudian-cantidadPrimaria-cantidadSecundaria)}`);
-                            cantidadUniversidad = +readlineSync.question(`Indique la cantidad de hijos en UNIVERSIDAD del empleado${i+1} solo puede digitar el número ${(cantidadEstudian-cantidadPrimaria-cantidadSecundaria)}`);
-                        }
+                        cantidadUniversidad = (cantidadEstudian-cantidadPrimaria-cantidadSecundaria);
                         console.dir(`El empleado${i+1} Si tiene en UNIVERSIDAD -- cantidadUniversidad "${cantidadUniversidad}"`);
                         console.dir(`cantidadUniversidad typeOF "${typeof(cantidadUniversidad)}"`);
                         salarioY = universidadY * cantidadUniversidad + salario;
                         console.dir(`salario mas secundariaZ = ${salarioY} `);
+                        salario = salarioY;
+                        console.log(`********* salario = salarioY ${salario} **************`);
                     }
                 }
             }
-        }
+    }
 
     console.dir(`**** Salario del empleado empleado${i+1} queda en: ${salario}`);
     TotalNominaIncluidoItems = TotalNominaIncluidoItems + salario;
