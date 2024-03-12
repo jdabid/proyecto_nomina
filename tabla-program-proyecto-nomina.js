@@ -281,3 +281,5 @@ console.info(`****** 3* Total nomina de las mujeres: $${TotalNominamujeres}`);
 console.info(`****** 4* El empleado que mas dinero le cuesta a la empresa es: $${empleadoQueMasDineroCuesta}`);
 console.info(`****** 5* El subsidio para secundaria tiene un valor de: $${subsidioSecundaria}`);
 console.info(`****** 6* El subsidio de pasajes para los empleados extranjeros tiene un valor de: $${subsidioPasajeExtranjero}`);
+
+
